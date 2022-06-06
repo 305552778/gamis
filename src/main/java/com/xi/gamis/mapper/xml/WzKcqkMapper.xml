@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WzKcqkMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WzKcqk">
+        <id column="bh" property="bh" />
+        <result column="jlbh" property="jlbh" />
+        <result column="dj" property="dj" />
+        <result column="kcsl" property="kcsl" />
+        <result column="kclx" property="kclx" />
+        <result column="dqsj" property="dqsj" />
+        <result column="jybz" property="jybz" />
+        <result column="img" property="img" />
+        <result column="kfbh" property="kfbh" />
+        <result column="gysbh" property="gysbh" />
+        <result column="dw2" property="dw2" />
+        <result column="sybm" property="sybm" />
+        <result column="rkbh" property="rkbh" />
+        <result column="scs" property="scs" />
+        <result column="bzq" property="bzq" />
+        <result column="gbm" property="gbm" />
+        <result column="ggxh" property="ggxh" />
+        <result column="bz" property="bz" />
+        <result column="xq" property="xq" />
+        <result column="gxsj" property="gxsj" />
+        <result column="gmrq" property="gmrq" />
+        <result column="spmcbh" property="spmcbh" />
+        <result column="kcsl2" property="kcsl2" />
+        <result column="syfx" property="syfx" />
+        <result column="fjbz" property="fjbz" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        jlbh, dj, kcsl, kclx, dqsj, jybz, bh, img, kfbh, gysbh, dw2, sybm, rkbh, scs, bzq, gbm, ggxh, bz, xq, gxsj, gmrq, spmcbh, kcsl2, syfx, fjbz
+    </sql>
+
+</mapper>

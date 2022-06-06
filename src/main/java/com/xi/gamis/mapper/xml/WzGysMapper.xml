@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WzGysMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WzGys">
+        <id column="gysbh" property="gysbh" />
+        <result column="gysqm" property="gysqm" />
+        <result column="htsj" property="htsj" />
+        <result column="khyh" property="khyh" />
+        <result column="gxsj" property="gxsj" />
+        <result column="sdfs" property="sdfs" />
+        <result column="yhzh" property="yhzh" />
+        <result column="djdw" property="djdw" />
+        <result column="lxr" property="lxr" />
+        <result column="ghjl" property="ghjl" />
+        <result column="lxdh" property="lxdh" />
+        <result column="dxhm" property="dxhm" />
+        <result column="email" property="email" />
+        <result column="gys" property="gys" />
+        <result column="czr" property="czr" />
+        <result column="pyjm" property="pyjm" />
+        <result column="czhm" property="czhm" />
+        <result column="locked" property="locked" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        gysqm, htsj, khyh, gxsj, sdfs, gysbh, yhzh, djdw, lxr, ghjl, lxdh, dxhm, email, gys, czr, pyjm, czhm, locked
+    </sql>
+
+</mapper>

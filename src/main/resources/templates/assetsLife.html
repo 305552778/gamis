@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/css/layui.css}">
+    <meta charset="UTF-8">
+    <style type="text/css">
+
+    </style>
+    <title>资产生命周期</title>
+</head>
+<body>
+<div style="margin: 0 auto; width: 800px;" th:text="${user}">name是bigsai(我是离线数据)</div>
+<table class="layui-table">
+    <tr>
+        <td>单位编号</td>
+        <td>单位名称</td>
+        <td>简写</td>
+        <td>地址</td>
+    </tr>
+    <tr  th:each="item:${jl}">
+        <td th:text="${item.jlbh}"></td>
+        <td th:text="${item.jl}"></td>
+        <td th:text="${item.jx}"></td>
+        <td th:text="${item.dz}"></td>
+    </tr>
+</table>
+
+<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WzSpmcMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WzSpmc">
+        <id column="spmcbh" property="spmcbh" />
+        <result column="splbbh" property="splbbh" />
+        <result column="xh" property="xh" />
+        <result column="spmc" property="spmc" />
+        <result column="dw" property="dw" />
+        <result column="xhbs" property="xhbs" />
+        <result column="pyjm" property="pyjm" />
+        <result column="txm" property="txm" />
+        <result column="gxsj" property="gxsj" />
+        <result column="czr" property="czr" />
+        <result column="ygjg" property="ygjg" />
+        <result column="hdjsp" property="hdjsp" />
+        <result column="xdfs" property="xdfs" />
+        <result column="gzwp" property="gzwp" />
+        <result column="hsdwbh" property="hsdwbh" />
+        <result column="hsbl" property="hsbl" />
+        <result column="bcpgl" property="bcpgl" />
+        <result column="jxsxx" property="jxsxx" />
+        <result column="hhfs" property="hhfs" />
+        <result column="bzq" property="bzq" />
+        <result column="loss" property="loss" />
+        <result column="xddw" property="xddw" />
+        <result column="scsxx" property="scsxx" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        splbbh, xh, spmc, dw, xhbs, pyjm, txm, gxsj, czr, ygjg, hdjsp, xdfs, gzwp, hsdwbh, hsbl, bcpgl, jxsxx, hhfs, bzq, loss, spmcbh, xddw, scsxx
+    </sql>
+
+</mapper>

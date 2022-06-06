@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产清单</title>
+    <script src="/js/echarts.min.js"></script>
+</head>
+<body>
+   <div id="cateStatistics" style="height: 400px; width: 100%; padding: 0 14px;">
+
+   </div>
+   <script type="text/javascript">
+       // 基于准备好的dom，初始化echarts实例
+       var myChart = echarts.init(document.getElementById('cateStatistics'));
+       var data=[{"306c":20},{"307c":35},{"308c":49},{"309c":52}];
+       // 指定图表的配置项和数据
+       var option = {
+           title: {
+               text: 'ECharts 入门示例'
+           },
+           tooltip: {},
+           legend: {
+               data:['销量']
+           },
+
+           series: [{
+               name: '资产数量',
+               type: 'pie',
+               radius:'80%',
+               label:{
+                   show:true,
+                   formatter:function(arg){
+                       return arg.name+':'+arg.value+'件。占比'+arg.percent;
+                   }
+               },
+               data: [{name:"30C",value:34},{name:"32C",value:44},{name:"35C",value:84},{name:"33C",value:24}]
+           }
+           ]
+       };
+
+       // 使用刚指定的配置项和数据显示图表。
+       myChart.setOption(option);
+   </script>
+</body>
+</html>

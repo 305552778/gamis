@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WbLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WbLog">
+        <id column="id" property="id" />
+        <result column="wbdw" property="wbdw" />
+        <result column="wblx" property="wblx" />
+        <result column="sbmc" property="sbmc" />
+        <result column="wbrq" property="wbrq" />
+        <result column="timestamp" property="timestamp" />
+        <result column="bmbh" property="bmbh" />
+        <result column="wbid" property="wbid" />
+        <result column="jlbh" property="jlbh" />
+        <result column="img" property="img" />
+        <result column="zcbh" property="zcbh" />
+        <result column="writer_id" property="writerId" />
+        <result column="cost" property="cost" />
+        <result column="title" property="title" />
+        <result column="wbssr" property="wbssr" />
+        <result column="wbbh" property="wbbh" />
+        <result column="writer" property="writer" />
+        <result column="cost_discription" property="costDiscription" />
+        <result column="body" property="body" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        wbdw, wblx, sbmc, wbrq, timestamp, bmbh, wbid, jlbh, img, zcbh, id, writer_id, cost, title, wbssr, wbbh, writer, cost_discription, body
+    </sql>
+
+</mapper>

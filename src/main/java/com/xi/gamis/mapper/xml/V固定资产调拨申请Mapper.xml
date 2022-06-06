@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.V固定资产调拨申请Mapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.V固定资产调拨申请">
+        <result column="dfjl" property="dfjl" />
+        <result column="spmcbh" property="spmcbh" />
+        <result column="sqcfdd" property="sqcfdd" />
+        <result column="zczt" property="zczt" />
+        <result column="sqbmmc" property="sqbmmc" />
+        <result column="bh" property="bh" />
+        <result column="cfdd" property="cfdd" />
+        <result column="dqbm" property="dqbm" />
+        <result column="sl" property="sl" />
+        <result column="bz" property="bz" />
+        <result column="ssbm" property="ssbm" />
+        <result column="dj" property="dj" />
+        <result column="glzc" property="glzc" />
+        <result column="sqr" property="sqr" />
+        <result column="ztbh" property="ztbh" />
+        <result column="spr" property="spr" />
+        <result column="splbbh" property="splbbh" />
+        <result column="gys" property="gys" />
+        <result column="Expr1" property="Expr1" />
+        <result column="dqjl" property="dqjl" />
+        <result column="dw" property="dw" />
+        <result column="dbyy" property="dbyy" />
+        <result column="dfbm" property="dfbm" />
+        <result column="jl" property="jl" />
+        <result column="zt" property="zt" />
+        <result column="splb" property="splb" />
+        <result column="df_spr" property="dfSpr" />
+        <result column="sqsj" property="sqsj" />
+        <result column="scs" property="scs" />
+        <result column="glbh" property="glbh" />
+        <result column="bm" property="bm" />
+        <result column="spmc" property="spmc" />
+        <result column="df_spsj" property="dfSpsj" />
+        <result column="zcbh" property="zcbh" />
+        <result column="zczrr" property="zczrr" />
+        <result column="fjbz" property="fjbz" />
+        <result column="ssjl" property="ssjl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        dfjl, spmcbh, sqcfdd, zczt, sqbmmc, bh, cfdd, dqbm, sl, bz, ssbm, dj, glzc, sqr, ztbh, spr, splbbh, gys, Expr1, dqjl, dw, dbyy, dfbm, jl, zt, splb, df_spr, sqsj, scs, glbh, bm, spmc, df_spsj, zcbh, zczrr, fjbz, ssjl
+    </sql>
+
+</mapper>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test" v-bind:style="style" v-on:click:="test">
+  {{total}}
+    <button v-on:click="test">反转消息</button>
+    <form action="">
+        <input v-model="key" type="text" placeholder="请输入">
+        <ul>
+            <li v-for="(tr,index) in trsFilter" :key="tr.spmcbh">
+                {{tr.spmc}}
+            </li>
+        </ul>
+    </form>
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>序号</td>-->
+<!--            <td>商品名称</td>-->
+<!--            <td>单价</td>-->
+<!--            <td>数量</td>-->
+<!--            <td>单位</td>-->
+<!--        </tr>-->
+<!--        <tr v-for="(tr,index) in trs" :key="tr.spmcbh">-->
+<!--            <td>{{index}}</td>-->
+<!--            <td>{{tr.spmc}}</td>-->
+<!--            <td>{{tr.dj}}</td>-->
+<!--            <td>{{tr.sl}}</td>-->
+<!--            <td>{{tr.dw}}</td>-->
+<!--        </tr>-->
+<!--    </table>-->
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+    var x=new Vue(
+        {
+            el:'#test',
+            data:{
+                key:'',
+                message:'这就是VUE',
+                click:0,
+                style:'margin: 0 auto; width: 500px; margin-top: 300px; font-size: 24px;',
+                trs:[{spmcbh:1,spmc:"aa",dj:15,sl:"5",dw:"个"},{spmcbh:2,spmc:"bb",dj:15,sl:"5",dw:"个"},{spmcbh:3,spmc:"cc",dj:15,sl:"5",dw:"个"}],
+                trsFilter:[]
+            },
+            watch:{
+                key:{
+                    immediate:true,
+                    handler(newVal,oldVal){
+                        this.trsFilter =this.trs.filter((p)=>{
+                            return   p.spmc.indexOf(newVal)!=-1;
+                        })
+                    }
+
+                }
+
+            }
+
+            ,
+            methods:{
+                test:function () {
+                    this.click++;
+                    this.message="你点击了"+this.click+"次，在点5次可能会中奖~~";
+                }
+            },
+            computed:{
+                total(){
+                   return "当前行数:"+this.trs.length+"------"+this.message;
+                }
+            }
+
+
+        }
+    )
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.GdzcAssetdetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.GdzcAssetdetail">
+        <id column="bh" property="bh" />
+        <result column="czr" property="czr" />
+        <result column="glzc" property="glzc" />
+        <result column="ssbm" property="ssbm" />
+        <result column="ID" property="id" />
+        <result column="fjbz" property="fjbz" />
+        <result column="gg" property="gg" />
+        <result column="dj" property="dj" />
+        <result column="img" property="img" />
+        <result column="zcbh" property="zcbh" />
+        <result column="scs" property="scs" />
+        <result column="glzt" property="glzt" />
+        <result column="syr" property="syr" />
+        <result column="bz" property="bz" />
+        <result column="cwlb" property="cwlb" />
+        <result column="rkzrr" property="rkzrr" />
+        <result column="spmcbh" property="spmcbh" />
+        <result column="gxsj" property="gxsj" />
+        <result column="zcly" property="zcly" />
+        <result column="xq" property="xq" />
+        <result column="gmrq" property="gmrq" />
+        <result column="zczrr" property="zczrr" />
+        <result column="gbm" property="gbm" />
+        <result column="print_times" property="printTimes" />
+        <result column="cfdd" property="cfdd" />
+        <result column="sys" property="sys" />
+        <result column="syfs" property="syfs" />
+        <result column="syfx" property="syfx" />
+        <result column="cwbh" property="cwbh" />
+        <result column="zczt" property="zczt" />
+        <result column="sl" property="sl" />
+        <result column="gys" property="gys" />
+        <result column="htbh" property="htbh" />
+        <result column="ckmxbh" property="ckmxbh" />
+        <result column="dj2" property="dj2" />
+        <result column="ssjl" property="ssjl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        czr, glzc, ssbm, ID, fjbz, gg, dj, img, zcbh, scs, glzt, syr, bz, bh, cwlb, rkzrr, spmcbh, gxsj, zcly, xq, gmrq, zczrr, gbm, print_times, cfdd, sys, syfs, syfx, cwbh, zczt, sl, gys, htbh, ckmxbh, dj2, ssjl
+    </sql>
+
+</mapper>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <link href="/css/weui.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body style="height: 100%;">
+<div class="page tabbar" style="height: 100%;">
+    <div class="page__bd" style="height: 100%;">
+
+        <a class="weui-btn weui-btn_primary" href="javascript:" id="start">发起流程</a>
+        <a class="weui-btn weui-btn_primary" href="javascript:" id="execute_a">委托人执行任务</a>
+<!--        <div class="weui-tab">-->
+<!--            <div class="weui-tab__panel" style="height:100%; margin-bottom:22px;">-->
+<!--                <div id="tab1" class="weui-tab__bd-item" style="height:100%;overflow-x: hidden;overflow-y:hidden;">-->
+<!--                    <iframe  id="tab1_frame" src="search.html" style="width:100%; height:100%;overflow-x:hidden ; overflow-y:auto;"></iframe>-->
+<!--                </div>-->
+
+<!--                <div id="tab2" style="display: none;height:100%;" class="weui-tab__bd-item">-->
+<!--                    <iframe id="tab2_frame" src="" style="width:100%; height:100%;overflow-x:hidden ; overflow-y:auto;"></iframe>-->
+<!--                </div>-->
+<!--                <div id="tab3" style="display: none;height:100%;" class="weui-tab__bd-item">-->
+<!--                    <iframe id="tab3_frame" src="" style="width:100%; height:100%;overflow-x:hidden ; overflow-y:auto;"></iframe>-->
+<!--                </div>-->
+<!--                <div id="tab4" style="display: none;height:100%;" class="weui-tab__bd-item">-->
+<!--                    <iframe id="tab4_frame" src="" style="width:100%; height:100%;overflow-x:hidden ; overflow-y:auto;"></iframe>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--            <div class="weui-tabbar">-->
+<!--                <a href="#tab1" class="weui-tabbar__item weui-bar__item_on">-->
+<!--                    <div style="display: inline-block; position: relative;">-->
+<!--                        <img src="./images/llsq.png" alt="" class="weui-tabbar__icon">-->
+<!--                    </div>-->
+<!--                    <p class="weui-tabbar__label">发起流程</p>-->
+<!--                </a>-->
+<!--                <a href="#tab2" class="weui-tabbar__item">-->
+<!--                    <div style="display: inline-block; position: relative;">-->
+<!--                        <img src="./images/llsp.png" alt="" class="weui-tabbar__icon">-->
+<!--                        <span id="appTabBadge" class="weui-badge" style="position: absolute; top: -2px; right: -13px;"></span>-->
+<!--                    </div>-->
+<!--                    <p class="weui-tabbar__label">待办任务</p>-->
+<!--                </a>-->
+<!--                <a href="#tab3" class="weui-tabbar__item">-->
+<!--                    <div style="display: inline-block; position: relative;">-->
+<!--                        <img src="./images/scan.png" alt="" class="weui-tabbar__icon">-->
+<!--                    </div>-->
+<!--                    <p class="weui-tabbar__label">调拨审批</p>-->
+<!--                </a>-->
+<!--                <a href="#tab4" class="weui-tabbar__item">-->
+<!--                    <img src="./images/me.png" alt="" class="weui-tabbar__icon">-->
+<!--                    <p class="weui-tabbar__label">个人中心</p>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="js_dialog" id="chooseCompany" style="display: none;">
+            <div id="mask" class="weui-mask"></div>
+            <div id="companyItems" class="weui-half-screen-dialog">
+                <div class="weui-half-screen-dialog__hd">
+                    <div class="weui-half-screen-dialog__hd__side">
+                    </div>
+                    <div class="weui-half-screen-dialog__hd__main">
+                        <strong class="weui-half-screen-dialog__title">请选择登陆单位</strong>
+                    </div>
+                </div>
+                <div class="weui-half-screen-dialog__bd">
+                    <div class="weui-form__control-area">
+                        <div class="weui-cells__group weui-cells__group_form">
+                            <div class="weui-cells weui-cells_radio" id="ins_bd">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-form__opr-area">
+                        <a class="weui-btn weui-btn_primary" href="javascript:" id="ok">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- loading toast -->
+<div id="loadingToast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+            <span class="weui-primary-loading weui-icon_toast">
+              <span class="weui-primary-loading__dot"></span>
+            </span>
+        <p class="weui-toast__content">加载中</p>
+    </div>
+</div>
+<input type="hidden" id="x" />
+<script src="/js/zepto.min.js" type="text/javascript"></script>
+<script src="/js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/t/wx_fed/cdn_libs/res/weui/1.2.5/weui.min.js"></script>
+<script type="text/javascript">
+    var ins_id=0; ddcode="";
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    $(function () {
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        $('#start').on('click', function(){
+                $.post("bpm/start",
+                    {
+
+                        "processDefinitionKey": "assetTransfer0",
+                        "businessKey":"1501",
+                        "instanceName":"来自龚强的测试资产调拨BPM",
+                        "variables":{
+                            "uid":"1101",
+                            "drsp":"1102",
+                            "dcsp":"1103",
+                            "adminIn":"1104",
+                            "adminOut":"1105",
+                            "campus":"diff"
+                        }
+
+                    },
+                    function(data){
+                        console.log(data);
+                    });
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        $('#execute_a').on('click', function(){
+            //(String taskId,String userId,String comment,@Nullable Map<String, Object> variables)
+            $.post("bpm/excute_a",
+                {
+
+                    "taskId": "efd588d2-9af0-11ec-92b1-f4d1080bbc48",
+                    "userId":"邹涛",
+                    "comment":"邹涛的审批意见"
+                },
+                function(data){
+                    console.log(data);
+                });
+        });
+    });
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function setAppTabBadge() {
+        $.post("stock/count",
+            function(data){
+                console.log(data);
+                if(data.code==1)
+                {
+                    if(data.data>0)
+                    {
+                        $('#appTabBadge').show();
+                        $('#appTabBadge').html(data.data);
+                    }
+                    else
+                    {
+                        $('#appTabBadge').hide();
+                    }
+                }
+                else
+                {
+                    $('#appTabBadge').hide();
+                }
+
+            });
+    }
+    function setIns() {
+        var radios = document.getElementsByName("company");
+        for(var i=0;i<radios.length;i++){
+            if(radios[i].checked == true){
+                ins_id = radios[i].value;
+            }
+        }
+    }
+    function buildInsView(ins) {
+        var ins_html="";
+        for (var i = 0; i < ins.length; i++) {
+            var item = ins[i];
+            ins_html += "<label class='weui-cell weui-cell_active weui-check__label' for='x"+item.instituteID+"'><div class='weui-cell__bd'>";
+            ins_html += "<p id='t"+item.instituteID+"'>" + item.instituteName + "</p>";
+            ins_html += "</div>";
+            ins_html += "<div class='weui-cell__ft'>";
+            ins_html += " <input type='radio' class='weui-check' name='company' value='" + item.instituteID + "' id='x"+item.instituteID+"' onclick='setIns()'/>";
+            ins_html += "<span class='weui-icon-checked'></span>";
+            ins_html += "</div>";
+            ins_html += "</label>";
+        }
+        return ins_html;
+    }
+</script>
+
+</body>
+</html>

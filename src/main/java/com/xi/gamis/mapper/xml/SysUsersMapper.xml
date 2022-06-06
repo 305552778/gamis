@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.SysUsersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.SysUsers">
+        <id column="bh" property="bh" />
+        <result column="yhm" property="yhm" />
+        <result column="xm" property="xm" />
+        <result column="mm" property="mm" />
+        <result column="kyjl" property="kyjl" />
+        <result column="yhdj" property="yhdj" />
+        <result column="tsysyqx" property="tsysyqx" />
+        <result column="qx" property="qx" />
+        <result column="czr" property="czr" />
+        <result column="gxsj" property="gxsj" />
+        <result column="zt" property="zt" />
+        <result column="email" property="email" />
+        <result column="gzcxmm" property="gzcxmm" />
+        <result column="ddcode" property="ddcode" />
+        <result column="openID" property="openID" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        bh, yhm, xm, mm, kyjl, yhdj, tsysyqx, qx, czr, gxsj, zt, email, gzcxmm, ddcode, openID
+    </sql>
+
+</mapper>

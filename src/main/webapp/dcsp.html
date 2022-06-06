@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <link href="/css/weui.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <style type="text/css" rel="stylesheet">
+    </style>
+    <title></title>
+</head>
+<body>
+<div class="page">
+    <div class="page_hd">
+        <span class="page_hd_title">调出审批</span>
+    </div>
+    <div class="page__bd" id="appList">
+
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">资产名称</label>
+                    <em class="weui-form-preview__value" style="font-size:1.2rem;">很长很长的名字很长很长的名字</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">调拨数量</label>
+                    <span class="weui-form-preview__value">14盒</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">单价</label>
+                    <span class="weui-form-preview__value">15.8</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">调入部门</label>
+                    <span class="weui-form-preview__value">信息中心</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">调出部门</label>
+                    <span class="weui-form-preview__value">银杏学院</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">申请人</label>
+                    <span class="weui-form-preview__value">龚强</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">申请时间</label>
+                    <span class="weui-form-preview__value">2021-8-10 14:32:36</span>
+                </div>
+
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">备注</label>
+                    <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+                </div>
+            </div>
+            <div class="weui-form-preview__ft">
+                <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">退回</a>
+                <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">通过</a>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<div id="success_toast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">操作成功</p>
+    </div>
+</div>
+
+<div class="js_dialog" id="cancelDialog" style="display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog">
+        <div class="weui-dialog__hd"><strong class="weui-dialog__title">退回原因</strong></div>
+        <div class="weui-dialog__bd">
+            <div class="weui-cell ">
+                <div class="weui-cell__bd">
+                    <input type="hidden" id="llbh">
+                    <textarea class="weui-textarea" placeholder="请告知退回原因(选填)" rows="2" id="remark"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_default" onclick="showCancelDialog(-1,0)">取消</a>
+            <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary" onclick="deny()">退回申请人</a>
+        </div>
+    </div>
+</div>
+
+<script src="/js/zepto.min.js" type="text/javascript"></script>
+<script src="/js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var dcsp = sessionStorage.getItem('dcsp');
+        if(dcsp!=""&&dcsp!=null)
+        {
+            var data = JSON.parse(data);
+            if(data!=null&&data.length>0)
+            {
+                BuildAppView(data);
+            }
+            else
+            {
+                $("#appList").html("<div class='center'>暂无数据</div>");
+            }
+
+        }
+        else
+        {
+            $("#appList").html("<div class='center'>暂无数据</div>");
+        }
+
+        //////////////////////////////////////////////////////
+    });
+    function showCancelDialog(id,isShow) {
+        if(isShow)
+        {
+            $("#llbh").val(id);
+            $("#cancelDialog").fadeIn(200);
+        }
+        else
+        {
+            $("#cancelDialog").fadeOut(200);
+        }
+
+    }
+
+    function deny()
+    {
+        var llbh=$('#llbh').val();
+        var remark=$('#remark').val();
+        if(remark.length<50)
+        {
+            approve(llbh,-3,remark);
+        }
+    }
+    function approve(llbh,result,remark)
+    {
+        $.post("assets/transfer/approval",
+            {
+                "id":llbh,
+                "result":result,
+                "remark":remark,
+                "current":1
+            },
+            function(data){
+                console.log(data.code);
+                if(data.code==1)
+                {
+                    $('#app'+llbh).remove();
+                    var $toast = $('#success_toast');
+                    $toast.fadeIn(100);
+                    setTimeout(function () {
+                        $toast.fadeOut(100);
+                    }, 1000);
+                    $("#cancelDialog").fadeOut(200);
+                }
+                else
+                {
+                    alert("与服务器通信失败！请联系管理员");
+                }
+            });
+    }
+
+    function BuildAppView(data)
+    {
+        var sb = "";
+        for (i = 0; i < data.length; i++) {
+            sb+="<div id='app"+data[i].bh+"' class=\"weui-form-preview\">" +
+                "                <div class=\"weui-form-preview__hd\">" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">资产名称</label>" +
+                "                        <em class=\"weui-form-preview__value\" style=\"font-size:1.2rem;\">"+data[i].spmc+"</em>" +
+                "                    </div>" +
+                "                </div>" +
+                "                <div class=\"weui-form-preview__bd\">" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">资产编号</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].zcbh+"</span>" +
+                "                    </div>" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">单价</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].dj+"</span>" +
+                "                    </div>" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">所属部门</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].bm+"</span>" +
+                "                    </div>" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">单位名称</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].jl+"</span>" +
+                "                    </div>" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">申请人</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].sqr+"-"+data[i].sqbmmc+"</span>" +
+                "                    </div>" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">申请时间</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].sqsj+"</span>" +
+                "                    </div>" +
+                "                    <div class=\"weui-form-preview__item\">" +
+                "                        <label class=\"weui-form-preview__label\">调拨原因</label>" +
+                "                        <span class=\"weui-form-preview__value\">"+data[i].dbyy+"</span>" +
+                "                    </div>" +
+                "                </div>" +
+                "                <div class=\"weui-form-preview__ft\">" +
+                "                    <a class=\"weui-form-preview__btn weui-form-preview__btn_default\" onclick='approve("+data[i].bh+",-3)' href=\"javascript:\">退回</a>" +
+                "                    <a class=\"weui-form-preview__btn weui-form-preview__btn_primary\" onclick='approve("+data[i].bh+",2)' href=\"javascript:\">通过</a>" +
+                "                </div>" +
+                "            </div>"+
+                "            <br>";
+        }
+        $("#appList").html(sb);
+    }
+</script>
+</body>
+
+</html>

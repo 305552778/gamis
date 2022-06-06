@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <link href="/css/weui.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <div class="page_hd">
+        <span class="page_hd_title">领用申请</span>
+        <span id="unfinished" class="page_hd_btn"><a style="color:#ffffff;" href="unsubmittedApply.html">未提交项</a><span id="appTabBadge" class="weui-badge" style="float: right"></span></span>
+
+    </div>
+    <div class="weui-search-bar" id="searchBar" style="padding-left:1.2rem;padding-right:1.2rem;  padding-top:3rem;">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入领用商品名称" required />
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>请输入领用商品名称</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+    <div class="weui-cells searchbar-result" id="searchResult">
+        <!--<div class="weui-cell weui-cell_active weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <a href="apply.html?n=25">
+                    <p>红外高清枪式摄像机1 | 21套 | IPC-HFW32XYZM-ABCD | ￥3450.00 | 成都校区 | 备注内容</p>
+                </a>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_active weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <a href="apply.html?n=28">
+                    <p>红外高清枪式摄像机2 | 124套 | IPC-HFW32XYZM-ABCD | ￥3450.00 | 成都校区| 备注内容</p>
+                </a>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_active weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <a href="apply.html?n=26">
+                    <p>红外高清枪式摄像机3 | 324套 | IPC-HFW32XYZM-ABCD | ￥3450.00 | 成都校区| 备注内容</p>
+                </a>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_active weui-cell_access">
+            <div class="weui-cell__bd weui-cell_primary">
+                <a href="apply.html?n=29">
+                    <p>红外高清枪式摄像机4 | 24套 | IPC-HFW32XYZM-ABCD | ￥3450.00 | 成都校区| 备注内容</p>
+                </a>
+            </div>
+        </div>-->
+    </div>
+
+    <script src="/js/zepto.min.js" type="text/javascript"></script>
+    <script src="/js/crypto/core.js" type="text/javascript"></script>
+    <script src="/js/crypto/enc-utf16.js" type="text/javascript"></script>
+    <!--<script src="/js/crypto/enc-base64.js" type="text/javascript"></script>
+    <script src="/js/crypto/hmac.js" type="text/javascript"></script>-->
+    <script src="/js/crypto/cipher-core.js" type="text/javascript"></script>
+
+    <!--<script src="/js/crypto/lib-typedarrays.js" type="text/javascript"></script>
+
+   <!--<script src="/js/crypto/evpkdf.js" type="text/javascript"></script>-->
+    <script src="/js/crypto/md5.js" type="text/javascript"></script>
+
+    <!--<script src="/js/crypto/sha256.js" type="text/javascript"></script>-->
+    <script src="/js/crypto/aes.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/t/wx_fed/cdn_libs/res/weui/1.2.5/weui.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/encrypt2.js"></script>
+    <script type="text/javascript">
+
+        var timer=0;
+        $(function () {
+            /////////////////////////////////////
+            setAppTabBadge();
+            //////////////////////////////////////
+            var $searchBar = $('#searchBar'),
+                $searchResult = $('#searchResult'),
+                $searchText = $('#searchText'),
+                $searchInput = $('#searchInput'),
+                $searchClear = $('#searchClear'),
+                $searchCancel = $('#searchCancel');
+
+            function hideSearchResult() {
+                $searchResult.hide();
+                $searchInput.val('');
+            }
+            function cancelSearch() {
+                hideSearchResult();
+                $searchBar.removeClass('weui-search-bar_focusing');
+                $searchText.show();
+            }
+            $searchText.on('click', function () {
+                $searchBar.addClass('weui-search-bar_focusing');
+                $searchInput.focus();
+            });
+            $searchInput
+                .on('blur', function () {
+                    if (!this.value.length) cancelSearch();
+                })
+                .on('input', function () {
+                    if (this.value.length) {
+                        var key=$("#searchInput").val();
+                        clearTimeout(timer);
+                        timer=setTimeout(function(){
+                            $.post("stock/search",
+                                {
+                                    "splbbh": -1,
+                                    "name":key
+                                },
+                                function(data){
+                                    if(data.code===1)
+                                    {
+                                        var content=BuildView(data.data);
+                                        $searchResult.html(content);
+                                        $searchResult.show();
+                                    }
+                                    else
+                                    {
+                                        alert(data.msg);
+                                        $searchResult.hide();
+                                    }
+                                });
+                        },1000);
+
+                    } else {
+                        $searchResult.hide();
+                    }
+                })
+                ;
+            $searchClear.on('click', function () {
+                hideSearchResult();
+                $searchInput.focus();
+            });
+            $searchCancel.on('click', function () {
+                cancelSearch();
+                $searchInput.blur();
+            });
+        });
+        function setAppTabBadge() {
+            $.post("stock/unsubmittedcount",
+                function(data){
+                    console.log(data);
+                    if(data.code==1)
+                    {
+                        if(data.data>0)
+                        {
+                            $('#appTabBadge').show();
+                            $('#appTabBadge').html(data.data);
+                        }
+                        else
+                        {
+                            $('#appTabBadge').hide();
+                        }
+                    }
+                    else
+                    {
+                        $('#appTabBadge').hide();
+                    }
+
+                });
+        }
+        function  BuildView(data) {
+            var sb = "";
+            for (i = 0; i < data.length; i++) {
+                var x = Encrypt2(JSON.stringify(data[i]));
+                sb += "<div class=\"weui-cell weui-cell_active weui-cell_access\"><div class=\"weui-cell__bd weui-cell_primary\"> <a href='apply.html?n=" + x + "'>";
+                sb += "<p>" + data[i].spmc + " | " + data[i].kcsl + data[i].dw + " | " + data[i].ggxh + " | ￥" + data[i].dj + " | " + data[i].xq + " | " + data[i].bz + "</p>";
+                sb += "</a></div></div>";
+            }
+            return sb;
+        }
+    </script>
+</body>
+</html>

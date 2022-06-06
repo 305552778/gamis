@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title></title>
+    <link href="/css/weui.css" rel="stylesheet" />
+    <link href="/css/layer.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page">
+        <div class="page_hd">
+            <a href="search.html"><b class="left"></b></a><span class="page_hd_title" style="border:none;padding-left:24px;">领用申请</span>
+        </div>
+          
+         <div class="page__bd" style="height: 100%; background: #ececec;">
+                    <div class="weui-form-preview">
+                        <div class="weui-panel__bd">
+                            <a href="javascript:" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd" style="width:120px; height:90px;">
+                                    <img id="img" class="weui-media-box__thumb" src="" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 id="spmc" class="weui-media-box__title">很长很长的名字很长很长的名字</h4>
+                                </div>
+                            </a>
+                            <a href="javascript:" class="weui-media-box weui-media-box_appmsg" style="padding:0;"></a>
+                        </div>
+                        <div class="weui-form-preview__bd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">库存数量</label>
+                                <span id="kcsl" class="weui-form-preview__value">14盒</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">可料数量</label>
+                                <span id="kysl" class="weui-form-preview__value">14盒</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">单价</label>
+                                <span id="dj" class="weui-form-preview__value">15.8</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">规格型号</label>
+                                <span id="ggxh" class="weui-form-preview__value">GX-1050-AP</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">库房名称</label>
+                                <span id="kfmc" class="weui-form-preview__value">综合库</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">校区</label>
+                                <span id="xq" class="weui-form-preview__value">成都校区</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">限定使用</label>
+                                <span id="sybm" class="weui-form-preview__value"></span>
+                            </div>
+
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">备注</label>
+                                <span id="remark" class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="weui-form__control-area" style="margin-top: 32px;">
+                        <div class="weui-cells__group weui-cells__group_form">
+                            <div class="weui-cells__title">请填写申请领用信息</div>
+                            <div class="weui-cells weui-cells_form">
+                                <div class="weui-cell weui-cell_active">
+                                    <div class="weui-cell__hd">
+                                        <label class="weui-label">领取数量</label>
+                                    </div>
+                                    <div class="weui-cell__bd">
+                                        <input id="llsl" name="llsl" class="weui-input" placeholder="填写领取数量" type="number" />
+                                    </div>
+                                </div>
+                                <div class="weui-cell weui-cell_active">
+                                    <div class="weui-cell__hd">
+                                        <label class="weui-label">备注</label>
+                                    </div>
+                                    <div class="weui-cell__bd">
+                                        <input id="bz" name="bz" class="weui-input" placeholder="备注选填" />
+                                    </div>
+                                </div>
+                                <div class="weui-cell weui-cell_active">
+                                    <div class="weui-cell__hd">
+                                        <label class="weui-label">存放地点</label>
+                                    </div>
+                                    <div class="weui-cell__bd">
+                                        <input id="fjh" name="fjh" class="weui-input" placeholder="选择存放地点(固定资产类)" readonly="readonly" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-form__opr-area">
+                        <a class="weui-btn weui-btn_primary" href="javascript:" id="submit">提交申请</a>
+                    </div>
+          </div>
+
+        <div id="okToast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                <p class="weui-toast__content">提交成功</p>
+            </div>
+        </div>
+        <div id="warnToast" style="display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-warn weui-icon_toast"></i>
+                <p class="weui-toast__content">与服务器通信失败请联系管理员</p>
+            </div>
+        </div>
+    </div>
+    <script src="/js/zepto.min.js"></script>
+    <script src="/js/zepto.min.js" type="text/javascript"></script>
+    <script src="/js/crypto/core.js" type="text/javascript"></script>
+    <script src="/js/crypto/enc-utf16.js" type="text/javascript"></script>
+    <script src="/js/crypto/enc-base64.js" type="text/javascript"></script>
+    <script src="/js/crypto/cipher-core.js" type="text/javascript"></script>
+    <script src="/js/crypto/md5.js" type="text/javascript"></script>
+    <script src="/js/crypto/aes.js" type="text/javascript"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/encrypt2.js"></script>
+    <script src="/js/layer.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/t/wx_fed/cdn_libs/res/weui/1.2.5/weui.min.js"></script>
+    <script type="text/javascript">
+    //FastClick.attach(document.body);
+    var fjh="-1";
+    $(function() {
+        $('#fjh').on('click', function () {
+            //var data=LoadPostData("assets/location/my");
+            $.post("assets/location/my",
+                function(data){
+                    if(data.length>0)
+                    {
+                        weui.picker(data, {
+                            onChange: function (result) {
+                                fjh=result[0].value;
+                            },
+                            onConfirm: function (result) {
+                                fjh=result[0].value;
+                                $('#fjh').val(result[0].value);
+                            },
+                            title: '存放地点',
+                            index: 0
+                        });
+                    }
+                    else
+                    {
+                        alert("获取数据失败请联系管理员");
+                    }
+                });
+        });
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var x=GetQueryString("n");
+        var d=JSON.parse(Decrypt2(x));
+        //{"ggxh":"","img":null,"kfmc":"宜宾校区","spmcbh":14320,"splbbh":2,"kcsl":10,"tpdz":null,"splb":"用品类","spmc":"方油隔","dj":30.5,"sybm":0,"yllsl":null,"xssl":null,"kcsl2":null,"kfbh":22,"dw":"把","kysl":10,"kclx":"正常","kclxbh":0,"bz":null,"pyjm":"FYG","jlbh":1,"xq":"","dw2":null}
+        $('#spmc').html(d.spmc);
+        $('#ggxh').html(d.ggxh);
+        $('#kfmc').html(d.kfmc);
+        $('#dj').html(d.dj+"元");
+        $('#kysl').html(d.kysl);
+        $('#remark').html(d.bz);
+        $('#kcsl').html(d.kcsl+d.dw);
+        $('#sybm').html(d.sybm);
+        if(d.img)
+        {
+            $('#img').attr("src","http://222.209.223.74:9088/upload/zc/"+StringToArray(d.img,',')[0]);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        $('#submit').on('click', function () {
+            var kysl=$('#kysl').val();
+            var llsl=$('#llsl').val();
+            var bz=$('#bz').val();
+            if( IsNumber(llsl)&&llsl>0&&bz.length<50)
+            {
+                if(llsl>kysl)
+                {
+                    layer.open({
+                        content: '领料数量不能大于可领数量'
+                        ,btn: '我知道了'
+                    });
+                    return;
+                }
+                else
+                {
+                    $.post("stock/apply",
+                        {
+                            "n": GetQueryString("n"),
+                            "llsl":llsl,
+                            "bz":bz,
+                            "cfdd":fjh
+                        },
+                        function(data){
+                            console.log(data);
+                            if(data.code===1)
+                            {
+                                var $toast = $('#okToast');
+                                if ($toast.css('display') != 'none') return;
+                                $toast.fadeIn(100);
+                                setTimeout(function () {
+                                    $toast.fadeOut(100);
+                                    window.location.href = 'search.html';
+                                }, 1000);
+
+                            }
+                            else
+                            {
+                                var $toast = $('#warnToast');
+                                if ($toast.css('display') != 'none') return;
+                                $toast.fadeIn(100);
+                                setTimeout(function () {
+                                    $toast.fadeOut(100);
+                                }, 2000);
+                            }
+                        });
+                }
+            }
+            else
+            {
+                layer.open({
+                    content: '信息填写错误请检查'
+                    ,btn: '核查数据'
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>

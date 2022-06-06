@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>系统登录</title>
+    <link href="/css/weui.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+
+    <!--<input type="button" value="查查查2" id="query"/><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>-->
+</head>
+<body>
+<h2>请登录系统</h2>
+
+<div class="page">
+    <div class="page__hd">
+        <p class="page__desc">表单预览</p>
+    </div>
+    <div class="page__bd">
+        <div class="page">
+            <div class="page__bd" style="height: 100%;background: #ececec;">
+                <div class="weui-tab">
+                    <div class="weui-navbar">
+                        <div class="weui-navbar__item weui-bar__item_on" href="#tab1">
+                            选项一
+                        </div>
+                        <div class="weui-navbar__item" href="#tab2">
+                            选项二
+                        </div>
+                        <div class="weui-navbar__item" href="#tab3">
+                            选项三
+                        </div>
+                    </div>
+                    <div class="weui-tab__panel">
+                        <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
+                            <div class="weui-search-bar" id="searchBar" style="padding: 1px;">
+                                <form class="weui-search-bar__form">
+                                    <div class="weui-search-bar__box">
+                                        <i class="weui-icon-search"></i>
+                                        <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="请输入领用商品名称" required />
+                                        <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                                    </div>
+                                    <label class="weui-search-bar__label" id="searchText">
+                                        <i class="weui-icon-search"></i>
+                                        <span>请输入领用商品名称</span>
+                                    </label>
+                                </form>
+                                <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                            </div>
+                            <div class="weui-cells searchbar-result" id="searchResult">
+                                <div class="weui-cell weui-cell_active weui-cell_access">
+                                    <div class="weui-cell__bd weui-cell_primary">
+                                        <a href="apply.html?n=25">
+                                            <p>红外高清枪式摄像机1 | 21套 | IPC-HFW32XYZM-ABCD | 3450.00 | 成都校区 | 备注内容</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="weui-cell weui-cell_active weui-cell_access">
+                                    <div class="weui-cell__bd weui-cell_primary">
+                                        <a href="apply.html?n=28">
+                                            <p>红外高清枪式摄像机2 | 124套 | IPC-HFW32XYZM-ABCD | 3450.00 | 成都校区| 备注内容</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="weui-cell weui-cell_active weui-cell_access">
+                                    <div class="weui-cell__bd weui-cell_primary">
+                                        <a href="apply.html?n=26">
+                                            <p>红外高清枪式摄像机3 | 324套 | IPC-HFW32XYZM-ABCD | 3450.00 | 成都校区| 备注内容</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="weui-cell weui-cell_active weui-cell_access">
+                                    <div class="weui-cell__bd weui-cell_primary">
+                                        <a href="apply.html?n=29">
+                                            <p>红外高清枪式摄像机4 | 24套 | IPC-HFW32XYZM-ABCD | 3450.00 | 成都校区| 备注内容</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="weui_tab_bd_item">
+
+                            <div class="weui-form-preview">
+                                <div class="weui-form-preview__hd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">领用商品</label>
+                                        <em class="weui-form-preview__value">很长很长的名字很长很长的名字</em>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__bd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">领料数量</label>
+                                        <span class="weui-form-preview__value">14盒</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">单价</label>
+                                        <span class="weui-form-preview__value">15.8</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">部门名称</label>
+                                        <span class="weui-form-preview__value">信息中心</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">单位名称</label>
+                                        <span class="weui-form-preview__value">银杏学院</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">申请人</label>
+                                        <span class="weui-form-preview__value">龚强</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">申请时间</label>
+                                        <span class="weui-form-preview__value">2021-8-10 14:32:36</span>
+                                    </div>
+
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">备注</label>
+                                        <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__ft">
+                                    <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">退回</a>
+                                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">通过</a>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="weui-form-preview">
+                                <div class="weui-form-preview__hd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">领用商品</label>
+                                        <em class="weui-form-preview__value">纸杯子</em>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__bd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">领料数量</label>
+                                        <span class="weui-form-preview__value">4盒</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">单价</label>
+                                        <span class="weui-form-preview__value">12.8</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">部门名称</label>
+                                        <span class="weui-form-preview__value">信息中心</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">单位名称</label>
+                                        <span class="weui-form-preview__value">银杏学院</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">申请人</label>
+                                        <span class="weui-form-preview__value">龚强</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">申请时间</label>
+                                        <span class="weui-form-preview__value">2021-8-10 14:32:36</span>
+                                    </div>
+
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">备注</label>
+                                        <span class="weui-form-preview__value">会议用</span>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__ft">
+                                    <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">退回</a>
+                                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">通过</a>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="weui-form-preview">
+                                <div class="weui-form-preview__hd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">领用商品</label>
+                                        <em class="weui-form-preview__value">台式电脑</em>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__bd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">领料数量</label>
+                                        <span class="weui-form-preview__value">1台</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">单价</label>
+                                        <span class="weui-form-preview__value">3215.8</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">部门名称</label>
+                                        <span class="weui-form-preview__value">信息中心</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">单位名称</label>
+                                        <span class="weui-form-preview__value">银杏学院</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">申请人</label>
+                                        <span class="weui-form-preview__value">龚强</span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">申请时间</label>
+                                        <span class="weui-form-preview__value">2021-8-10 14:32:36</span>
+                                    </div>
+
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">备注</label>
+                                        <span class="weui-form-preview__value">旧电脑更换</span>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__ft">
+                                    <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">退回</a>
+                                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">通过</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    <div id="tab3" class="weui_tab_bd_item">
+
+
+                        <div class="weui-form__control-area" style="margin-top: 32px;">
+                            <div class="weui-cells__group weui-cells__group_form">
+                                <div class="weui-cells__title">表单组标题</div>
+                                <div class="weui-cells weui-cells_form">
+                                    <div class="weui-cell weui-cell_active">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">商品名称</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell weui-cell_active">
+                                        <div class="weui-cell__hd"><label class="weui-label">微信号</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input id="js_input" class="weui-input" placeholder="填写本人微信号"/>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell weui-cell_active">
+                                        <div class="weui-cell__hd"><label class="weui-label">昵称</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input id="js_input" class="weui-input" placeholder="填写本人微信号的昵称"/>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell weui-cell_active">
+                                        <div class="weui-cell__hd"><label class="weui-label">联系电话</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input id="js_input" class="weui-input" placeholder="填写绑定的电话号码" type="number" pattern="[0-9]*"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-form__opr-area">
+                            <a class="weui-btn weui-btn_primary weui-btn_disabled" href="javascript:" id="showTooltips">确定</a>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="/Scripts/zepto.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.2.5/weui.min.js"></script>
+<script type="text/javascript">
+    //FastClick.attach(document.body);
+    $(function() {
+        $('.weui-navbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            //内容切换
+            $(".weui-tab__panel .weui_tab_bd_item_active").removeClass('weui_tab_bd_item_active');
+            var data_toggle =$(this).attr("href");
+            $(data_toggle).addClass("weui_tab_bd_item_active");
+        });
+        //$('#query').click(function(){
+            //$.post("http://localhost:8080/sys-users/vo2", { "page": 2, "limit": 10,"field":"bh","order":"asc"},
+                //function(data){
+                    //console.log(data);
+                    //if(data.Code==1)
+                    //{
+
+                   // }
+                   // else
+                    //{
+                   // }
+               // });
+        //});
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var $searchBar = $('#searchBar'),
+            $searchResult = $('#searchResult'),
+            $searchText = $('#searchText'),
+            $searchInput = $('#searchInput'),
+            $searchClear = $('#searchClear'),
+            $searchCancel = $('#searchCancel');
+
+        function hideSearchResult() {
+            $searchResult.hide();
+            $searchInput.val('');
+        }
+        function cancelSearch() {
+            hideSearchResult();
+            $searchBar.removeClass('weui-search-bar_focusing');
+            $searchText.show();
+        }
+
+        $searchText.on('click', function () {
+            $searchBar.addClass('weui-search-bar_focusing');
+            $searchInput.focus();
+        });
+        $searchInput
+            .on('blur', function () {
+                if (!this.value.length) cancelSearch();
+            })
+            .on('input', function () {
+                if (this.value.length) {
+                    $searchResult.show();
+                } else {
+                    $searchResult.hide();
+                }
+            })
+        ;
+        $searchClear.on('click', function () {
+            hideSearchResult();
+            $searchInput.focus();
+        });
+        $searchCancel.on('click', function () {
+            cancelSearch();
+            $searchInput.blur();
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    });
+</script>
+</body>
+</html>

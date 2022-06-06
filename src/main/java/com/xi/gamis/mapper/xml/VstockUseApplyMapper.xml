@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.VstockUseApplyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.VstockUseApply">
+        <result column="spr" property="spr" />
+        <result column="je" property="je" />
+        <result column="kfmc" property="kfmc" />
+        <result column="ruleid" property="ruleid" />
+        <result column="bz" property="bz" />
+        <result column="kclx" property="kclx" />
+        <result column="bh" property="bh" />
+        <result column="ggxh" property="ggxh" />
+        <result column="thr" property="thr" />
+        <result column="bm" property="bm" />
+        <result column="sl" property="sl" />
+        <result column="xq" property="xq" />
+        <result column="spmcbh" property="spmcbh" />
+        <result column="spmc" property="spmc" />
+        <result column="zc_lsh" property="zcLsh" />
+        <result column="bs" property="bs" />
+        <result column="dj" property="dj" />
+        <result column="sqsj" property="sqsj" />
+        <result column="jlbh" property="jlbh" />
+        <result column="splbbh" property="splbbh" />
+        <result column="lldw" property="lldw" />
+        <result column="syfx" property="syfx" />
+        <result column="spsj" property="spsj" />
+        <result column="bmbh" property="bmbh" />
+        <result column="splb" property="splb" />
+        <result column="zt" property="zt" />
+        <result column="cfdd" property="cfdd" />
+        <result column="thbz" property="thbz" />
+        <result column="jl" property="jl" />
+        <result column="sqr" property="sqr" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        spr, je, kfmc, ruleid, bz, kclx, bh, ggxh, thr, bm, sl, xq, spmcbh, spmc, zc_lsh, bs, dj, sqsj, jlbh, splbbh, lldw, syfx, spsj, bmbh, splb, zt, cfdd, thbz, jl, sqr
+    </sql>
+
+</mapper>

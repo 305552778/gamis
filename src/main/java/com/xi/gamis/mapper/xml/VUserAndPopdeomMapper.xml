@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.VUserAndPopdeomMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.VUserAndPopdeom">
+        <result column="zwbh" property="zwbh" />
+        <result column="xdfhqx" property="xdfhqx" />
+        <result column="jlbh" property="jlbh" />
+        <result column="llcxqx" property="llcxqx" />
+        <result column="xm" property="xm" />
+        <result column="jglbqx" property="jglbqx" />
+        <result column="ygbh" property="ygbh" />
+        <result column="zt" property="zt" />
+        <result column="yhdj" property="yhdj" />
+        <result column="hhfl_th" property="hhflTh" />
+        <result column="bh" property="bh" />
+        <result column="kfqx" property="kfqx" />
+        <result column="tsysyqx" property="tsysyqx" />
+        <result column="hhqx" property="hhqx" />
+        <result column="hhspfl" property="hhspfl" />
+        <result column="pmglqx" property="pmglqx" />
+        <result column="mm" property="mm" />
+        <result column="ssjl" property="ssjl" />
+        <result column="hhfl_xh" property="hhflXh" />
+        <result column="ddcode" property="ddcode" />
+        <result column="jl" property="jl" />
+        <result column="hhfl_Print" property="hhflPrint" />
+        <result column="xdqx" property="xdqx" />
+        <result column="yhm" property="yhm" />
+        <result column="bm" property="bm" />
+        <result column="qx" property="qx" />
+        <result column="xhcxqx" property="xhcxqx" />
+        <result column="xdspqx" property="xdspqx" />
+        <result column="kyjl" property="kyjl" />
+        <result column="bmbh" property="bmbh" />
+        <result column="hhfl_gh" property="hhflGh" />
+        <result column="llspqx" property="llspqx" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        zwbh, xdfhqx, jlbh, llcxqx, xm, jglbqx, ygbh, zt, yhdj, hhfl_th, bh, kfqx, tsysyqx, hhqx, hhspfl, pmglqx, mm, ssjl, hhfl_xh, ddcode, jl, hhfl_Print, xdqx, yhm, bm, qx, xhcxqx, xdspqx, kyjl, bmbh, hhfl_gh, llspqx
+    </sql>
+
+</mapper>

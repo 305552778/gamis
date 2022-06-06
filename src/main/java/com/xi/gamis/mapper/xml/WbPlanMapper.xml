@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WbPlanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WbPlan">
+        <id column="id" property="id" />
+        <result column="spmc" property="spmc" />
+        <result column="wbpl" property="wbpl" />
+        <result column="wbssr" property="wbssr" />
+        <result column="lzzq" property="lzzq" />
+        <result column="jzrq" property="jzrq" />
+        <result column="gzr" property="gzr" />
+        <result column="syzs" property="syzs" />
+        <result column="fzbm" property="fzbm" />
+        <result column="lb" property="lb" />
+        <result column="wbjh" property="wbjh" />
+        <result column="bz" property="bz" />
+        <result column="bmbh" property="bmbh" />
+        <result column="jzwmc" property="jzwmc" />
+        <result column="syqk" property="syqk" />
+        <result column="fjmc" property="fjmc" />
+        <result column="xq" property="xq" />
+        <result column="wbbh" property="wbbh" />
+        <result column="fzr" property="fzr" />
+        <result column="trsyrq" property="trsyrq" />
+        <result column="zt" property="zt" />
+        <result column="jzwlh" property="jzwlh" />
+        <result column="wbbz" property="wbbz" />
+        <result column="czr" property="czr" />
+        <result column="wbje" property="wbje" />
+        <result column="jlbh" property="jlbh" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        spmc, wbpl, wbssr, lzzq, jzrq, gzr, syzs, fzbm, lb, wbjh, bz, bmbh, jzwmc, syqk, id, fjmc, xq, wbbh, fzr, trsyrq, zt, jzwlh, wbbz, czr, wbje, jlbh
+    </sql>
+
+</mapper>

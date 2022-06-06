@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.SysBmlbMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.SysBmlb">
+        <id column="bmbh" property="bmbh" />
+        <result column="bm" property="bm" />
+        <result column="bmkc" property="bmkc" />
+        <result column="xq" property="xq" />
+        <result column="bmlxbh" property="bmlxbh" />
+        <result column="tpdz" property="tpdz" />
+        <result column="pid" property="pid" />
+        <result column="bz" property="bz" />
+        <result column="gxsj" property="gxsj" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        bm, bmkc, xq, bmlxbh, tpdz, pid, bz, bmbh, gxsj, sort
+    </sql>
+
+</mapper>

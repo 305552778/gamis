@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WzQxszMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WzQxsz">
+        <id column="bh" property="bh" />
+        <result column="ygbh" property="ygbh" />
+        <result column="jglbqx" property="jglbqx" />
+        <result column="llspqx" property="llspqx" />
+        <result column="llcxqx" property="llcxqx" />
+        <result column="xhcxqx" property="xhcxqx" />
+        <result column="gxsj" property="gxsj" />
+        <result column="hhfl_th" property="hhflTh" />
+        <result column="pmglqx" property="pmglqx" />
+        <result column="xdfhqx" property="xdfhqx" />
+        <result column="jlbh" property="jlbh" />
+        <result column="hhspfl" property="hhspfl" />
+        <result column="kfqx" property="kfqx" />
+        <result column="hhqx" property="hhqx" />
+        <result column="xdqx" property="xdqx" />
+        <result column="hhfl_gh" property="hhflGh" />
+        <result column="hhfl_xh" property="hhflXh" />
+        <result column="xdspqx" property="xdspqx" />
+        <result column="hhfl_Print" property="hhflPrint" />
+        <result column="czr" property="czr" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        bh, ygbh, jglbqx, llspqx, llcxqx, xhcxqx, gxsj, hhfl_th, pmglqx, xdfhqx, jlbh, hhspfl, kfqx, hhqx, xdqx, hhfl_gh, hhfl_xh, xdspqx, hhfl_Print, czr
+    </sql>
+
+</mapper>

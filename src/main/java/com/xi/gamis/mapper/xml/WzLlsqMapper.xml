@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.WzLlsqMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.WzLlsq">
+        <result column="thr" property="thr" />
+        <result column="ggxh" property="ggxh" />
+        <result column="txm" property="txm" />
+        <result column="bmbh" property="bmbh" />
+        <result column="xq" property="xq" />
+        <result column="cfdd" property="cfdd" />
+        <result column="xmmc" property="xmmc" />
+        <result column="kfbh" property="kfbh" />
+        <result column="zc_lsh" property="zcLsh" />
+        <result column="bs" property="bs" />
+        <result column="lldw" property="lldw" />
+        <result column="classid" property="classid" />
+        <result column="bh" property="bh" />
+        <result column="sqsj" property="sqsj" />
+        <result column="spmcbh" property="spmcbh" />
+        <result column="sl2" property="sl2" />
+        <result column="spsj" property="spsj" />
+        <result column="kcbh" property="kcbh" />
+        <result column="ruleid" property="ruleid" />
+        <result column="sqr" property="sqr" />
+        <result column="thbz" property="thbz" />
+        <result column="syfx" property="syfx" />
+        <result column="jlbh" property="jlbh" />
+        <result column="spr" property="spr" />
+        <result column="kclxbh" property="kclxbh" />
+        <result column="xmbh" property="xmbh" />
+        <result column="dj" property="dj" />
+        <result column="bz" property="bz" />
+        <result column="sl" property="sl" />
+        <result column="sybm" property="sybm" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        thr, ggxh, txm, bmbh, xq, cfdd, xmmc, kfbh, zc_lsh, bs, lldw, classid, bh, sqsj, spmcbh, sl2, spsj, kcbh, ruleid, sqr, thbz, syfx, jlbh, spr, kclxbh, xmbh, dj, bz, sl, sybm
+    </sql>
+
+</mapper>

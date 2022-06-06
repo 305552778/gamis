@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <link href="/css/weui.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <style type="text/css" rel="stylesheet">
+    </style>
+    <title></title>
+</head>
+<body>
+<div class="page">
+    <div class="page_hd">
+        <span class="page_hd_title">资产调拨审批</span>
+    </div>
+    <div class="page__bd" id="appList">
+
+        <div class="weui-cells__title">调拨申请->调入审批->调出审批->资产科审批->完成</div>
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_active weui-cell_access" href="drsp.html">
+                <div class="weui-cell__bd">
+                    <span class="demo_badge_title">调入审批</span>
+                    <span class="weui-badge hide" id="bgDr"></span>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+            <a class="weui-cell weui-cell_active weui-cell_access" href="dcsp.html">
+                <div class="weui-cell__bd">
+                    <span class="demo_badge_title">调出审批</span>
+                    <span class="weui-badge hide" id="bgDc"></span>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+        </div>
+        <br>
+    </div>
+</div>
+<div id="success_toast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">操作成功</p>
+    </div>
+</div>
+
+<div class="js_dialog" id="cancelDialog" style="display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog">
+        <div class="weui-dialog__hd"><strong class="weui-dialog__title">退回原因</strong></div>
+        <div class="weui-dialog__bd">
+            <div class="weui-cell ">
+                <div class="weui-cell__bd">
+                    <input type="hidden" id="llbh">
+                    <textarea class="weui-textarea" placeholder="请告知退回原因(选填)" rows="2" id="remark"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_default" onclick="showCancelDialog(-1,0)">取消</a>
+            <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary" onclick="deny()">退回申请人</a>
+        </div>
+    </div>
+</div>
+
+<script src="/js/zepto.min.js" type="text/javascript"></script>
+<script src="/js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
+<script type="text/javascript">
+    var dplist=[];
+    var $dpId=0;
+    $(function () {
+
+        loadData($dpId);
+        //////////////////////////////////////////////////////
+    });
+    function loadData(dpID) {
+        $.post("assets//transfer/my",
+            {
+                "r":new Date().getDate()
+            },
+            function(rp){
+                console.log(rp);
+                if(rp.code===1)
+                {
+                   var dr=rp.data.drsp;
+                    var dc=rp.data.dcsp;
+                   if(dr!=null&&dr.length>1)
+                   {
+                       $("#bgDr").show();
+                       $("#bgDr").html(dr.length);
+                       sessionStorage.setItem('drsp',JSON.stringify(dr));
+                   }
+                    if(dc!=null&&dc.length>1)
+                    {
+                        $("#bgDc").show();
+                        $("#bgDc").html(dc.length);
+                        sessionStorage.setItem('dcsp',JSON.stringify(dc));
+                    }
+
+                }
+                else
+                {
+                    $("#appList").html("<div class='center'>"+rp.msg+"</div>");
+                }
+            });
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xi.gamis.mapper.V固定资产GroupedMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xi.gamis.entity.V固定资产Grouped">
+        <result column="ssjl" property="ssjl" />
+        <result column="jl" property="jl" />
+        <result column="gg" property="gg" />
+        <result column="cwlb" property="cwlb" />
+        <result column="je" property="je" />
+        <result column="spmc" property="spmc" />
+        <result column="gys" property="gys" />
+        <result column="zclb" property="zclb" />
+        <result column="sys" property="sys" />
+        <result column="xq" property="xq" />
+        <result column="cfdd" property="cfdd" />
+        <result column="htbh" property="htbh" />
+        <result column="splb" property="splb" />
+        <result column="bz" property="bz" />
+        <result column="dj2" property="dj2" />
+        <result column="dl" property="dl" />
+        <result column="cwbh" property="cwbh" />
+        <result column="dw" property="dw" />
+        <result column="spmcbh" property="spmcbh" />
+        <result column="splbbh" property="splbbh" />
+        <result column="dj" property="dj" />
+        <result column="scs" property="scs" />
+        <result column="bm" property="bm" />
+        <result column="gmrq" property="gmrq" />
+        <result column="fjbz" property="fjbz" />
+        <result column="zcmc" property="zcmc" />
+        <result column="flh" property="flh" />
+        <result column="je2" property="je2" />
+        <result column="zczrr" property="zczrr" />
+        <result column="zczt" property="zczt" />
+        <result column="zclbbh" property="zclbbh" />
+        <result column="syfx" property="syfx" />
+        <result column="sl" property="sl" />
+        <result column="ssbm" property="ssbm" />
+        <result column="zt" property="zt" />
+        <result column="zcly" property="zcly" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ssjl, jl, gg, cwlb, je, spmc, gys, zclb, sys, xq, cfdd, htbh, splb, bz, dj2, dl, cwbh, dw, spmcbh, splbbh, dj, scs, bm, gmrq, fjbz, zcmc, flh, je2, zczrr, zczt, zclbbh, syfx, sl, ssbm, zt, zcly
+    </sql>
+
+</mapper>

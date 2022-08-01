@@ -30,7 +30,7 @@ import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     //private UserDetailsService userDetailsService;
     private UserAuthenticationService userDetailsService;
@@ -50,14 +50,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(password());
     }
 
+    ///https://blog.csdn.net/qq_21602341/article/details/114577740
+    ///前后端分离实现API认证
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //super.configure(http);
+
+        http.headers().frameOptions().disable();
+        http.csrf().disable().headers().frameOptions().sameOrigin();// 解决iframe无法访问;//这个设置一定要放在最前面！！老子快崩溃了！！找了一天BUG，就是这个顺序的原因！FK!!
+        http.authorizeRequests().antMatchers("/auth").anonymous().anyRequest().authenticated();
+    }
+
+    /*@Override
+    protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
         http.csrf().disable().headers().frameOptions().sameOrigin();// 解决iframe无法访问;//这个设置一定要放在最前面！！老子快崩溃了！！找了一天BUG，就是这个顺序的原因！FK!!
         http.logout()
                 .logoutUrl("/logout").invalidateHttpSession(true)
                 .logoutSuccessUrl("/test.html").permitAll();
+        http.exceptionHandling().authenticationEntryPoint(new UnAuthEntryPoint());//匿名用户访问无权限资源时的异常处理
         //http.exceptionHandling().accessDeniedPage("/common/failure").authenticationEntryPoint(new UnAuthEntryPoint());//设置无权限访问跳转页面
         http.formLogin()
                 //.successHandler(authenticationSuccessHandler)
@@ -100,7 +110,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         //http.addFilterBefore(new TokenAuthorityFilter(authenticationManager()), BasicAuthenticationFilter.class);
         //.httpBasic().disable();
         ;
-    }
+    }*/
     @Bean
     MyUsernamePasswordAuthenticationFilter myAuthenticationFilter() throws Exception {
         MyUsernamePasswordAuthenticationFilter filter = new MyUsernamePasswordAuthenticationFilter();

@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,6 +39,8 @@ public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private TokenManager tokenManager;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private UnAuthEntryPoint unAuthEntryPoint;
 
     @Autowired
     DataSource  dataSource;
@@ -55,9 +58,42 @@ public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.headers().frameOptions().disable();
-        http.csrf().disable().headers().frameOptions().sameOrigin();// 解决iframe无法访问;//这个设置一定要放在最前面！！老子快崩溃了！！找了一天BUG，就是这个顺序的原因！FK!!
-        http.authorizeRequests().antMatchers("/auth").anonymous().anyRequest().authenticated();
+        http.formLogin()
+                //禁用表单登录，前后端分离用不上
+                .disable()
+                //应用登录过滤器的配置，配置分离
+                .apply(jwtAuthenticationSecurityConfig)
+
+                .and()
+                // 设置URL的授权
+                .authorizeRequests()
+                // 这里需要将登录页面放行,permitAll()表示不再拦截，/login 登录的url，/refreshToken刷新token的url
+                //TODO 此处正常项目中放行的url还有很多，比如swagger相关的url，druid的后台url，一些静态资源
+                .antMatchers("/login", "/refreshToken","/login2")
+                .permitAll()
+                //hasRole()表示需要指定的角色才能访问资源
+                .antMatchers("/hello").hasRole("admin")
+                // anyRequest() 所有请求   authenticated() 必须被认证
+                .anyRequest()
+                .authenticated()
+
+                //处理异常情况：认证失败和权限不足
+                .and()
+                .exceptionHandling()
+                //认证未通过，不允许访问异常处理器
+                .authenticationEntryPoint(unAuthEntryPoint)
+                //认证通过，但是没权限处理器
+                .accessDeniedHandler(authenticationSuccessHandler)
+
+                .and()
+                //禁用session，JWT校验不需要session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+                .and()
+                //将TOKEN校验过滤器配置到过滤器链中，否则不生效，放到UsernamePasswordAuthenticationFilter之前
+                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
+                // 关闭csrf
+                .csrf().disable();
     }
 
     /*@Override

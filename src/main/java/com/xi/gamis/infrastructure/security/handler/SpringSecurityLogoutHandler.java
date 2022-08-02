@@ -1,5 +1,6 @@
-package com.xi.gamis.infrastructure.security;
+package com.xi.gamis.infrastructure.security.handler;
 
+import com.xi.gamis.infrastructure.security.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.Authentication;

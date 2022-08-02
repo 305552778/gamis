@@ -1,19 +1,17 @@
 package com.xi.gamis.config;
 
-import cn.myjszl.security.jwt.filter.JwtAuthenticationLoginFilter;
-import cn.myjszl.security.jwt.handler.LoginAuthenticationFailureHandler;
-import cn.myjszl.security.jwt.handler.LoginAuthenticationSuccessHandler;
 import com.xi.gamis.application.UserAuthenticationService;
+import com.xi.gamis.infrastructure.security.filter.MyUsernamePasswordAuthenticationFilter;
+import com.xi.gamis.infrastructure.security.handler.AuthenFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
@@ -36,13 +34,13 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
      * 登录成功处理器
      */
     @Autowired
-    private LoginAuthenticationSuccessHandler loginAuthenticationSuccessHandler;
+    private AuthenticationSuccessHandler authenticationSuccessHandler; //LoginAuthenticationSuccessHandler loginAuthenticationSuccessHandler;
 
     /**
      * 登录失败处理器
      */
     @Autowired
-    private LoginAuthenticationFailureHandler loginAuthenticationFailureHandler;
+    private AuthenFailureHandler authenFailureHandler; //LoginAuthenticationFailureHandler loginAuthenticationFailureHandler;
 
     /**
      * 加密
@@ -59,16 +57,17 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
      */
     @Override
     public void configure(HttpSecurity http) {
-        JwtAuthenticationLoginFilter filter = new JwtAuthenticationLoginFilter();
+        //JwtAuthenticationLoginFilter filter = new JwtAuthenticationLoginFilter();
+        MyUsernamePasswordAuthenticationFilter filter=new MyUsernamePasswordAuthenticationFilter();
         filter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
         //认证成功处理器
-        filter.setAuthenticationSuccessHandler(loginAuthenticationSuccessHandler);
+        filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
         //认证失败处理器
-        filter.setAuthenticationFailureHandler(loginAuthenticationFailureHandler);
+        filter.setAuthenticationFailureHandler(authenFailureHandler);
         //直接使用DaoAuthenticationProvider
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         //设置userDetailService
-        provider.setUserDetailsService(userDetailsService);
+        provider.setUserDetailsService(userAuthenticationService);
         //设置加密算法
         provider.setPasswordEncoder(passwordEncoder);
         http.authenticationProvider(provider);

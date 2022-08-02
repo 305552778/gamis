@@ -4,6 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.xi.gamis.application.UserAuthenticationService;
 import com.xi.gamis.dto.CommonResult;
 import com.xi.gamis.infrastructure.security.*;
+import com.xi.gamis.infrastructure.security.filter.MyUsernamePasswordAuthenticationFilter;
+import com.xi.gamis.infrastructure.security.handler.AuthenticationSuccessHandler;
+import com.xi.gamis.infrastructure.security.handler.RequestAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +24,6 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -41,19 +43,22 @@ public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private RedisTemplate redisTemplate;
     @Autowired
     private UnAuthEntryPoint unAuthEntryPoint;
-
     @Autowired
     DataSource  dataSource;
     @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
-
+    @Autowired
+    private RequestAccessDeniedHandler requestAccessDeniedHandler;
+    @Autowired
+    private JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //super.configure(auth);
         auth.userDetailsService(userDetailsService).passwordEncoder(password());
     }
 
-    ///https://blog.csdn.net/qq_21602341/article/details/114577740
+    ///前后端分离参考： https://developer.aliyun.com/article/822790，https://blog.csdn.net/weixin_42375707/article/details/110678638，
+    // https://blog.csdn.net/qq_21602341/article/details/114577740
     ///前后端分离实现API认证
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -83,7 +88,7 @@ public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //认证未通过，不允许访问异常处理器
                 .authenticationEntryPoint(unAuthEntryPoint)
                 //认证通过，但是没权限处理器
-                .accessDeniedHandler(authenticationSuccessHandler)
+                .accessDeniedHandler(requestAccessDeniedHandler)
 
                 .and()
                 //禁用session，JWT校验不需要session

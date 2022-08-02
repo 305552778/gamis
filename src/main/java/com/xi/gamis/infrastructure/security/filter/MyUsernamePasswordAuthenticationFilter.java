@@ -1,4 +1,4 @@
-package com.xi.gamis.infrastructure.security;
+package com.xi.gamis.infrastructure.security.filter;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;

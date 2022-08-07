@@ -12,18 +12,18 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
-public class SecurityUser implements UserDetails {
+public class SecurityUserInfo implements UserDetails {
     //使用transient关键字不序列化某个变量
     // *        注意读取的时候，读取数据的顺序一定要和存放数据的顺序保持一致
     //当前用户
     private transient UserInfo userInfo;
     //当前权限
     private List<String> permissionList;
-    public SecurityUser()
+    public SecurityUserInfo()
     {
 
     }
-    public SecurityUser(UserInfo userInfo) {
+    public SecurityUserInfo(UserInfo userInfo) {
         if (userInfo!=null)
         {
             this.userInfo = userInfo;

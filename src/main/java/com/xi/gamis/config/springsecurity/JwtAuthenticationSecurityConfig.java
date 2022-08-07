@@ -1,6 +1,7 @@
-package com.xi.gamis.config;
+package com.xi.gamis.config.springsecurity;
 
 import com.xi.gamis.application.UserAuthenticationService;
+import com.xi.gamis.infrastructure.security.filter.JwtAuthenticationLoginFilter;
 import com.xi.gamis.infrastructure.security.filter.MyUsernamePasswordAuthenticationFilter;
 import com.xi.gamis.infrastructure.security.handler.AuthenFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +58,8 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
      */
     @Override
     public void configure(HttpSecurity http) {
-        //JwtAuthenticationLoginFilter filter = new JwtAuthenticationLoginFilter();
-        MyUsernamePasswordAuthenticationFilter filter=new MyUsernamePasswordAuthenticationFilter();
+        JwtAuthenticationLoginFilter filter = new JwtAuthenticationLoginFilter();
+        //MyUsernamePasswordAuthenticationFilter filter=new MyUsernamePasswordAuthenticationFilter();
         filter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
         //认证成功处理器
         filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);

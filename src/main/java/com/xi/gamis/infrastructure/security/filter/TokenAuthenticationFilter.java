@@ -1,6 +1,7 @@
 package com.xi.gamis.infrastructure.security.filter;
-import cn.myjszl.common.base.constant.SecurityConstant;
-import cn.myjszl.common.base.utils.JwtUtils;
+import com.xi.gamis.application.UserAuthenticationService;
+import com.xi.gamis.infrastructure.constant.SecurityConstant;
+import com.xi.gamis.infrastructure.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,14 +27,14 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
      * JWT的工具类
      */
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtUtil jwtUtil;
 
     /**
      * UserDetailsService的实现类，从数据库中加载用户详细信息
      */
-    @Qualifier("jwtTokenUserDetailsService")
+    //@Qualifier("jwtTokenUserDetailsService")
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserAuthenticationService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
@@ -45,12 +46,12 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
          *  2.1 校验token中的用户名是否失效
          */
         if (!StringUtils.isEmpty(token)){
-            String username = jwtUtils.getUsernameFromToken(token);
+            String username = jwtUtil.getUsernameFromToken(token);
             //SecurityContextHolder.getContext().getAuthentication()==null 未认证则为true
             if (!StringUtils.isEmpty(username) && SecurityContextHolder.getContext().getAuthentication()==null){
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 //如果token有效
-                if (jwtUtils.validateToken(token,userDetails)){
+                if (jwtUtil.validateToken(token,userDetails)){
                     // 将用户信息存入 authentication，方便后续校验
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
                             userDetails.getAuthorities());

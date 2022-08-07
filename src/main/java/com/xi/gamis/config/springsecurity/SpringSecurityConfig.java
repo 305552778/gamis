@@ -1,10 +1,11 @@
-package com.xi.gamis.config;
+package com.xi.gamis.config.springsecurity;
 
 import com.alibaba.fastjson.JSON;
 import com.xi.gamis.application.UserAuthenticationService;
 import com.xi.gamis.dto.CommonResult;
 import com.xi.gamis.infrastructure.security.*;
 import com.xi.gamis.infrastructure.security.filter.MyUsernamePasswordAuthenticationFilter;
+import com.xi.gamis.infrastructure.security.filter.TokenAuthenticationFilter;
 import com.xi.gamis.infrastructure.security.handler.AuthenticationSuccessHandler;
 import com.xi.gamis.infrastructure.security.handler.RequestAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(password());
     }
 
-    ///前后端分离参考： https://developer.aliyun.com/article/822790，https://blog.csdn.net/weixin_42375707/article/details/110678638，
+    ///前后端分离参考：https://www.java-family.cn/#/spring-boot/31-SpringBootSecurity+JWT%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E6%9E%B6%E6%9E%84%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81%EF%BC%81, https://developer.aliyun.com/article/822790，https://blog.csdn.net/weixin_42375707/article/details/110678638，
     // https://blog.csdn.net/qq_21602341/article/details/114577740
     ///前后端分离实现API认证
     @Override
@@ -99,6 +100,11 @@ public class  SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
                 // 关闭csrf
                 .csrf().disable();
+    }
+    // 自定义的Jwt Token校验过滤器
+    @Bean
+    public TokenAuthenticationFilter authenticationTokenFilterBean() {
+        return new TokenAuthenticationFilter();
     }
 
     /*@Override

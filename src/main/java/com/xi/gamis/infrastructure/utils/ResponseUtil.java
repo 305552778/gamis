@@ -20,7 +20,7 @@ public class ResponseUtil {
         response.setContentType("application/json;charset=UTF-8");
         ServletOutputStream out = response.getOutputStream();
         ObjectMapper objectMapper = new ObjectMapper();
-        out.write(objectMapper.writeValueAsString(r.getMsg()).getBytes("UTF-8"));
+        out.write(objectMapper.writeValueAsString(r).getBytes("UTF-8"));
         out.flush();
         out.close();
 
